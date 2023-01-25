@@ -1,16 +1,15 @@
 
 const express = require('express');
 
-const app = express();
+//*Custom imports
+const adminRoutes = require('./routes/admin');
+const adminShop = require('./routes/shop')
 
-app.use( '/add-product', (req, res, next) => {
-    console.log('In the middleware! of the middleware');
-    res.send('<h1> God of War script</h1>');
-});
+const app = express( ({ extended: false} ));
 
-app.use( '/', (req, res, next) => {
-    console.log('In the middleware! of the middleware');
-    res.send('<h1> Dont be sorry father be better</h1>');
-});
+app.use( adminRoutes );
+
+app.use( adminShop );
+
  
 app.listen(3000);
